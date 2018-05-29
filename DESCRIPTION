@@ -4,13 +4,15 @@ Title: Graphical User Interface for OpenSource Event Detection
 Version: 0.1.0
 Authors@R: c(
         person("Frederik","Rehbach", role = c("aut", "cre"), email = "frederik.rehbach@th-koeln.de"),
-        person("Thomas", "Bartz-Beielstein", role = "ctb"),
-		person("Andreas","Fischbach", role = "ctb"),
-		person("Lorenzo","Gentile", role = "ctb"))
+        person("Paolo", "Aguilar", role = "ctb"),
+		person("Andreas","Bodendorfer", role = "ctb"),
+		person("Christian","Höffer", role = "ctb"),
+		person("Akbar", "Shadakov", role = "ctb"))
 Author: Frederik Rehbach [aut, cre],
-        Thomas Bartz-Beielstein [ctb],
-        Andreas Fischbach [ctb],
-        Lorenzo Gentile [ctb]
+        Paolo Aguilar [ctb],
+        Andreas Bodendorfer [ctb],
+        Christian Höffer [ctb],
+        Akbar Shadakov [ctb]
 Maintainer: Frederik Rehbach <frederik.rehbach@th-koeln.de>
 Description: A graphical user interface for open source event detection.
 License: GPL (>=2)
