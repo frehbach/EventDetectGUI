@@ -1,0 +1,34 @@
+Package: owosgui
+Type: Package
+Title: Graphical User Interface for OpenSource Event Detection
+Version: 0.1.0
+Authors@R: c(
+        person("Frederik","Rehbach", role = c("aut", "cre"), email = "frederik.rehbach@th-koeln.de"),
+        person("Thomas", "Bartz-Beielstein", role = "ctb"),
+		person("Andreas","Fischbach", role = "ctb"),
+		person("Lorenzo","Gentile", role = "ctb"))
+Author: Frederik Rehbach [aut, cre],
+        Thomas Bartz-Beielstein [ctb],
+        Andreas Fischbach [ctb],
+        Lorenzo Gentile [ctb]
+Maintainer: Frederik Rehbach <frederik.rehbach@th-koeln.de>
+Description: A graphical user interface for open source event detection.
+License: GPL (>=2)
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.1.0),
+Imports:
+    shinyBS,
+    shiny,
+    shinydashboard,
+    shinyjs,
+    XML,
+    plotly,
+    tools
+Suggests:
+    roxygen2,
+    testthat,
+    shinytest,
+    devtools
+RoxygenNote: 6.0.1
