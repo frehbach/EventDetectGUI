@@ -27,7 +27,8 @@ Imports:
     shinyjs,
     XML,
     plotly,
-    tools
+    tools,
+    DT
 Suggests:
     roxygen2,
     testthat,

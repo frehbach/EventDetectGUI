@@ -14,10 +14,10 @@ getUIPage <- function(){
         # Creation of Main Tabs
         dashboardSidebar(
             sidebarMenu(id = "tabs",
-                        menuItem("Objective function", tabName = "objectiveFunction"),
-                        menuItem("Spot Config", tabName = "spotConfig"),
-                        menuItem("Run Spot", tabName = "runMode"),
-                        menuItem("Exports", tabName = "exports")
+                        menuItem("Data Preparation", tabName = "dataPreparation"),
+                        menuItem("Algorithm Config", tabName = "algConfig"),
+                        menuItem("Run Event Detection", tabName = "runMode"),
+                        menuItem("Visualization", tabName = "visu")
             )
         ),
 
@@ -28,21 +28,47 @@ getUIPage <- function(){
 
             tabItems(
                 # Objective function configuration tab
-                tabItem(tabName = "objectiveFunction",
+                tabItem(tabName = "dataPreparation",
                         fluidRow(
                             wellPanel(
-                                uiOutput("objectiveFunctionSelector")
+                                tags$div(title="Select a data file to import",
+                                         fileInput("inputFile", "Data File Selection",
+                                                   multiple = TRUE,
+                                                   accept = c("text/csv",
+                                                              "text/comma-separated-values,text/plain",
+                                                              ".csv"))),
+                                checkboxInput("csvAdvancedConfig", "Specify advanced CSV read options", FALSE),
+                                conditionalPanel(
+                                    condition = "input.csvAdvancedConfig == true",
+                                    tags$hr(),
+
+                                    # Input: Checkbox if CSV input file has header
+                                    checkboxInput("csvUseHeader", "Header", TRUE),
+                                    fluidRow(
+                                        column(4,
+                                        # Input: Select separator for csv interpretation
+                                        radioButtons("csvSep", "Data Separator",
+                                                     choices = c(Comma = ",",
+                                                                 Semicolon = ";",
+                                                                 Tab = "\t"),
+                                                     selected = ",")),
+                                        column(4,
+                                        # Input: Select quotes style for csv input
+                                        radioButtons("csvQuote", "How are quotes handled?",
+                                                     choices = c(None = "",
+                                                                 "Double Quote" = '"',
+                                                                 "Single Quote" = "'"),
+                                                     selected = '"'))
+                                    )
+                                )
                             ),
-                            h3("Dimensions: "),
-                            uiOutput("objectiveFunctionAdditionalSpecifiers"),
-                            uiOutput("objectiveFunctionInputParameters"),
-                            actionButton(inputId = "addDimension",
-                                         label = "",icon = icon("plus-circle"))
+                            uiOutput("outDataSelection"),
+                            DT::dataTableOutput("outDataHead")
                         )
                 ),
 
                 # Configuration Tab for spot settings
-                tabItem(tabName = "spotConfig",
+                tabItem(tabName = "algConfig",
                         fluidRow(
                             column(6,
                                    wellPanel(
@@ -98,7 +124,7 @@ getUIPage <- function(){
                         )
                 ),
 
-                tabItem(tabName = "exports",
+                tabItem(tabName = "visu",
                         shiny::tags$head(shiny::tags$style(shiny::HTML(
                             "#rLog {height: 200px; overflow: auto; }"
                         ))),
