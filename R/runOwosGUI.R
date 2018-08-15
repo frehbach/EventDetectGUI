@@ -13,7 +13,6 @@
 #' @import XML
 #' @import plotly
 #' @import shinyBS
-#' @import DT
 #' @importFrom tools Rd_db
 #'
 #' @export
