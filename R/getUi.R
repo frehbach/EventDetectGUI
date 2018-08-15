@@ -14,9 +14,9 @@ getUIPage <- function(){
         # Creation of Main Tabs
         dashboardSidebar(
             sidebarMenu(id = "tabs",
-                        menuItem("Data Preparation", tabName = "dataPreparation"),
+                        menuItem("Data Selection", tabName = "dataSelection"),
                         menuItem("Data Visualization", tabName = "visu"),
-                        menuItem("Algorithm Config", tabName = "algConfig"),
+                        menuItem("Algorithms Config", tabName = "algConfig"),
                         menuItem("Run Event Detection", tabName = "runMode"),
                         menuItem("Result Visualization", tabName = "resView")
             )
@@ -29,7 +29,7 @@ getUIPage <- function(){
 
             tabItems(
                 # Objective function configuration tab
-                tabItem(tabName = "dataPreparation",
+                tabItem(tabName = "dataSelection",
                         fluidRow(
                             wellPanel(
                                 tags$div(title="Select a data file to import",
@@ -88,8 +88,8 @@ getUIPage <- function(){
                                        uiOutput("generalConfigUI")
                                    ),
                                    wellPanel(
-                                       h4("Data Preparation"),
-                                       uiOutput("dataPreparationUI")
+                                       h4("Data Selection"),
+                                       uiOutput("dataSelectionUI")
                                    )
                             ),
                             column(6,
@@ -107,43 +107,11 @@ getUIPage <- function(){
                 ),
 
                 tabItem(tabName = "runMode",
-                        fluidRow(
-                            wellPanel(
-                                actionButton("runCreateDOE", "Create DOE"),
-                                actionButton("evaluateData","Evaluate Data/Update Model"),
-                                actionButton("runSpotIter", "Run SPOT", onclick="Shiny.onInputChange('spotInterrupted',false)"),
-                                actionButton("proposeNewPoint", "Propose next Point"),
-                                actionButton("resetData", "Reset"),
-                                actionButton("interruptSpot","Interrupt Spot", onclick="Shiny.onInputChange('spotInterrupted',true)"),
-                                checkboxInput("rLogMode",label = "Log Only")
-                            )
-                        ),
-                        fluidRow(
-                            uiOutput("bestFound"),
-                            column(6
-
-                            ),
-                            column(6,
-                                   uiOutput("slidersResult"),
-                                   uiOutput("variableSelectors"),
-                                   #if (requireNamespace("plotly", quietly = TRUE)) {
-                                   #       plotlyOutput("plotlyModelPlot")
-                                   # },
-                                   plotlyOutput("resultModelPlot")
-                            )
-                        )
+                        h4("Sadly not yet implemented...")
                 ),
 
                 tabItem(tabName = "resView",
-                        shiny::tags$head(shiny::tags$style(shiny::HTML(
-                            "#rLog {height: 200px; overflow: auto; }"
-                        ))),
-                        wellPanel(
-                            h4("R Recreation Log"),
-                            verbatimTextOutput("rLog"),
-                            checkboxInput("shortenLog", "Only Show Entrys after last data reset"),
-                            uiOutput("clipButton")
-                        )
+                        h4("Sadly not yet implemented...")
                 )
             )
         )
