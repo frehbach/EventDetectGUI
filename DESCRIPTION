@@ -1,21 +1,22 @@
-Package: owosgui
+Package: EventDetectGUI
 Type: Package
-Title: Graphical User Interface for OpenSource Event Detection
+Title: Graphical User Interface for the 'EventDetectR' Package
 Version: 0.1.0
 Authors@R: c(
         person("Frederik","Rehbach", role = c("aut", "cre"), email = "frederik.rehbach@th-koeln.de"),
+        person("Steffen", "Moritz", email="steffen.moritz10@gmail.com", role=c("aut"), comment = c(ORCID = "0000-0002-0085-1804")),
         person("Paolo", "Aguilar", role = "ctb"),
 		person("Andreas","Bodendorfer", role = "ctb"),
 		person("Christian","Höffer", role = "ctb"),
 		person("Akbar", "Shadakov", role = "ctb"))
 Author: Frederik Rehbach [aut, cre],
+        Steffen Moritz [aut] (<https://orcid.org/0000-0002-0085-1804>),
         Paolo Aguilar [ctb],
         Andreas Bodendorfer [ctb],
         Christian Höffer [ctb],
         Akbar Shadakov [ctb]
 Maintainer: Frederik Rehbach <frederik.rehbach@th-koeln.de>
 Description: A graphical user interface for open source event detection.
-License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
 Depends:
@@ -34,4 +35,6 @@ Suggests:
     testthat,
     shinytest,
     devtools
+License: GPL-3
+VignetteBuilder: utils
 RoxygenNote: 6.0.1

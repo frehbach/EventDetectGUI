@@ -19,3 +19,12 @@ setAllCsvCheckBoxes <- function(session){
 resetAllCsvCheckBoxes <- function(session){
     updateCheckboxGroupInput(session,"csvColumnCheckBox",selected = character(0))
 }
+
+getCSVCols <- function(input){
+    cols <- which(names(getEnvData("csvData")[-1]) %in% input$csvColumnCheckBox)
+    cols <- cols + 1
+    if(length(cols) >= 1){
+        cols <- c(1,cols)
+    }
+    return(cols)
+}

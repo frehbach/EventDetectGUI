@@ -12,6 +12,9 @@ packageDataEnv <- new.env()
 #' @return current value of the variable
 #' @keywords internal
 getEnvData <- function(strName){
+    if(!exists(strName,envir = packageDataEnv)){
+        return(NULL)
+    }
     get(strName,envir = packageDataEnv)
 }
 

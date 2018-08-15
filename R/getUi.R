@@ -15,9 +15,10 @@ getUIPage <- function(){
         dashboardSidebar(
             sidebarMenu(id = "tabs",
                         menuItem("Data Preparation", tabName = "dataPreparation"),
+                        menuItem("Data Visualization", tabName = "visu"),
                         menuItem("Algorithm Config", tabName = "algConfig"),
                         menuItem("Run Event Detection", tabName = "runMode"),
-                        menuItem("Visualization", tabName = "visu")
+                        menuItem("Result Visualization", tabName = "resView")
             )
         ),
 
@@ -67,30 +68,39 @@ getUIPage <- function(){
                         )
                 ),
 
-                # Configuration Tab for spot settings
+                tabItem(tabName = "visu",
+                        wellPanel(
+                            fluidRow(
+                                column(4,uiOutput("visuDataSlider")),
+                                column(4,uiOutput("visuDataInput"))
+                            ),
+                            uiOutput("uiOutPlotSelectColumnsVisu")
+                        ),
+                        plotlyOutput("plotVisu")
+                ),
+
+                # Configuration Tab for Algorithm settings
                 tabItem(tabName = "algConfig",
                         fluidRow(
                             column(6,
                                    wellPanel(
                                        h4("General Settings"),
-                                       uiOutput("spotConfigUI")
+                                       uiOutput("generalConfigUI")
                                    ),
                                    wellPanel(
-                                       h4("Optimizer"),
-                                       uiOutput("fieldOptimizerSelector"),
-                                       uiOutput("optimizerUI")
+                                       h4("Data Preparation"),
+                                       uiOutput("dataPreparationUI")
                                    )
                             ),
                             column(6,
                                    wellPanel(
-                                       h4("Modelling"),
-                                       uiOutput("fieldModelSelector"),
-                                       uiOutput("modelUI")
+                                       h4("Event Detection Algorithm"),
+                                       uiOutput("algorithmSelector"),
+                                       uiOutput("algorithmConfigUI")
                                    ),
                                    wellPanel(
-                                       h4("Design Settings"),
-                                       uiOutput("fieldDesignSelector"),
-                                       uiOutput("designUI")
+                                       h4("Postprocess Settings"),
+                                       uiOutput("postProcessUI")
                                    )
                             )
                         )
@@ -124,7 +134,7 @@ getUIPage <- function(){
                         )
                 ),
 
-                tabItem(tabName = "visu",
+                tabItem(tabName = "resView",
                         shiny::tags$head(shiny::tags$style(shiny::HTML(
                             "#rLog {height: 200px; overflow: auto; }"
                         ))),
