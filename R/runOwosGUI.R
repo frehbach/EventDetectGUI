@@ -1,10 +1,10 @@
-#' runOwosGUI
+#' runGUI
 #'
-#' Run the starting command of the owosGUI. Opens the graphical shiny application through which the user
+#' Run the starting command of the EventDetectGUI. Opens the graphical shiny application through which the user
 #' can acess the algorithms and visualizations.
 #'
 #' @usage
-#' runOwosGUI()
+#' runGUI()
 #'
 #' @import shiny
 #' @import shinydashboard
@@ -17,10 +17,10 @@
 #' @importFrom tools Rd_db
 #'
 #' @export
-runOwosGUI <- function() {
-    appDir <- system.file(package = "owosgui")
+runGUI <- function() {
+    appDir <- system.file(package = "EventDetectGUI")
     if (appDir == "") {
-        stop("Could not find app directory. Try re-installing `owosgui`.", call. = FALSE)
+        stop("Could not find app directory. Try re-installing `EventDetectGUI`.", call. = FALSE)
     }
     shiny::runApp(appDir, display.mode = "normal")
 }

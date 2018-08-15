@@ -1,3 +1,3 @@
 #Main Shiny Application Call
-require("spotGUI")
+require("EventDetectGUI")
 shinyApp(ui = getUIPage, server = getServer)

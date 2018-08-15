@@ -6,8 +6,8 @@
 #' @keywords internal
 .onAttach <- function(libname, pkgname){
     if (!interactive()) return()
-    packageStartupMessage("*** Welcome to the owosgui package ***\n\n
-                          There is only one command that you will need to use the owosgui:\n
-                          runOwosGUI()\n\n
+    packageStartupMessage("*** Welcome to the EventDetectGUI package ***\n\n
+                          There is only one command that you will need to use the GUI:\n
+                          runGUI()\n\n
                           ")
 }
