@@ -3,4 +3,8 @@
 .RData
 .Ruserdata
 .DS_Store
-.RbuildIgnore
+Icon
+Icon?
+desktop.ini
+.dropbox
+*.Rproj
