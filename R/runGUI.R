@@ -14,6 +14,8 @@
 #' @import plotly
 #' @import shinyBS
 #' @importFrom tools Rd_db
+#' @importFrom stats sd
+#' @importFrom utils read.csv
 #'
 #' @export
 runGUI <- function() {

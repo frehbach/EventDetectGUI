@@ -29,7 +29,9 @@ Imports:
     XML,
     plotly,
     tools,
-    DT
+    DT,
+    stats,
+    utils
 Suggests:
     roxygen2,
     testthat,
