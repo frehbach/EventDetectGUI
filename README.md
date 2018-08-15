@@ -1,2 +1,2 @@
-# owosgui
-owosgui
+# EventDetectGUI
+Info on the gui...
