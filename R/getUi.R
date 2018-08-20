@@ -85,21 +85,23 @@ getUIPage <- function(){
                             column(6,
                                    wellPanel(
                                        h4("General Settings"),
-                                       uiOutput("generalConfigUI")
+                                       uiOutput("generalUI")
                                    ),
                                    wellPanel(
-                                       h4("Data Selection"),
-                                       uiOutput("dataSelectionUI")
+                                       h4("Preprocessor Selection"),
+                                       uiOutput("preProcessSelector"),
+                                       uiOutput("preProcessUI")
                                    )
                             ),
                             column(6,
                                    wellPanel(
                                        h4("Event Detection Algorithm"),
                                        uiOutput("algorithmSelector"),
-                                       uiOutput("algorithmConfigUI")
+                                       uiOutput("algorithmUI")
                                    ),
                                    wellPanel(
                                        h4("Postprocess Settings"),
+                                       uiOutput("postProcessSelector"),
                                        uiOutput("postProcessUI")
                                    )
                             )

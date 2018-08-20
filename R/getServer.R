@@ -144,4 +144,36 @@ getServer <- function(input, output, session) {
     observeEvent(input$refreshVisuPlots,{
 
     })
+
+    output$preProcessSelector <- renderUI({
+        getUiSelectorXML("preProcess",input)
+    })
+
+    output$algorithmSelector <- renderUI({
+        getUiSelectorXML("algorithm",input)
+    })
+
+    output$postProcessSelector <- renderUI({
+        getUiSelectorXML("postProcess",input)
+    })
+
+    output$preProcessUI <- renderUI({
+        req(input$preProcessSelector)
+        getUiXML("preProcess",input)
+    })
+
+    output$algorithmUI <- renderUI({
+        req(input$algorithmSelector)
+        getUiXML("algorithm",input)
+    })
+
+    output$postProcessUI <- renderUI({
+        req(input$postProcessSelector)
+        getUiXML("postProcess",input)
+    })
+
+    output$generalUI <- renderUI({
+        getUiXML("general",input, selectedInput = "general"
+                 , selectedElement = getSelectedElementList("general", "general", input))
+    })
 }
