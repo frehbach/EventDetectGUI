@@ -7,5 +7,5 @@ recordNewTest <- function(){
     requireNamespace("testthat")
     requireNamespace("shinytest")
 
-    shinytest::recordTest("tests/testthat")
+    shinytest::recordTest("inst/appTests")
 }
