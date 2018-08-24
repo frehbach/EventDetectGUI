@@ -6,7 +6,8 @@ cache: packages
 sudo: required
 
 r_github_packages:
-  - jimhester/covr
+  - jimhester/covr@shiny-app
+  - jimhester/shinytest@covr
   - frehbach/EventDetectGUI
 
 after_success:
