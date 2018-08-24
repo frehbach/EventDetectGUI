@@ -10,4 +10,5 @@ r_github_packages:
   - frehbach/EventDetectGUI
 
 after_success:
+  - R -f run_tests.R
   - Rscript -e 'library(covr);codecov()'
