@@ -7,7 +7,6 @@ sudo: required
 
 r_github_packages:
   - jimhester/covr
-  - jimhester/shinytest
   - frehbach/EventDetectGUI
 
 after_success:
