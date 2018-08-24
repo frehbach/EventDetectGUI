@@ -4,5 +4,5 @@ library(shinytest)
 context("Shiny GUI Tests")
 
 test_that("Application works", {
-    expect_error(testApp(system.file(package = "EventDetectGUI")), regexp = NA)
+    expect_error(testApp(system.file("appTests",package = "EventDetectGUI")), regexp = NA)
 })
