@@ -9,7 +9,7 @@ getUIPage <- function(){
     dashboardPage(
         # Theme Color Setting
         skin = "blue",
-        dashboardHeader(title = "owosGUI"),
+        dashboardHeader(title = "EventDetectGUI"),
 
         # Creation of Main Tabs
         dashboardSidebar(
