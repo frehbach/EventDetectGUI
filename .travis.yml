@@ -28,7 +28,7 @@ before_install:
   - "phantomjs --version"
 
 r_github_packages:
-  - covr
-
+  - jimhester/covr
+  - frehbach/EventDetectGUI
 after_success:
   - Rscript -e 'library(covr);codecov()'
