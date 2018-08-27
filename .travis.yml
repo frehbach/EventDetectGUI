@@ -28,8 +28,8 @@ before_install:
   - "phantomjs --version"
 
 r_github_packages:
-  - jimhester/covr
-  - jimhester/shinytest
+  - jimhester/shinytest@covr
+  - jimhester/covr@shiny-app
   - frehbach/EventDetectGUI
 after_success:
   - Rscript -e 'library(covr);codecov()'
