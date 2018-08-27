@@ -27,7 +27,12 @@
         <name>ImputeTSInterpolation</name>
         <variableList>
             <name>Show</name>
-
+            <variable>
+                <name>funEvals</name>
+                <type>integer</type>
+                <default>20</default>
+                <min>1</min>
+            </variable>
         </variableList>
     </preProcess>
     <preProcess>

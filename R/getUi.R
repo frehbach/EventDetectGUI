@@ -14,11 +14,13 @@ getUIPage <- function(){
         # Creation of Main Tabs
         dashboardSidebar(
             sidebarMenu(id = "tabs",
+                        menuItem("Home", tabName = "home"),
                         menuItem("Data Selection", tabName = "dataSelection"),
                         menuItem("Data Visualization", tabName = "visu"),
                         menuItem("Algorithms Config", tabName = "algConfig"),
                         menuItem("Run Event Detection", tabName = "runMode"),
-                        menuItem("Result Visualization", tabName = "resView")
+                        menuItem("Result Visualization", tabName = "resView"),
+                        menuItem("Code Export", tabName = "exports")
             )
         ),
 
@@ -28,6 +30,11 @@ getUIPage <- function(){
             shinyjs::useShinyjs(),
 
             tabItems(
+                tabItem(tabName = "home",
+                        h2("HOME"),
+                        h4("Sadly not yet implemented...")
+                ),
+
                 # Objective function configuration tab
                 tabItem(tabName = "dataSelection",
                         fluidRow(
@@ -109,11 +116,25 @@ getUIPage <- function(){
                 ),
 
                 tabItem(tabName = "runMode",
-                        h4("Sadly not yet implemented...")
+                        h4("Sadly not yet implemented..."),
+                        actionButton(inputId = "runEDS", label = "Run Event Detection"),
+                        textOutput("edsOutput")
                 ),
 
                 tabItem(tabName = "resView",
                         h4("Sadly not yet implemented...")
+                ),
+
+                tabItem(tabName = "exports",
+                        shiny::tags$head(shiny::tags$style(shiny::HTML(
+                            "#rLog {height: 200px; overflow: auto; }"
+                        ))),
+                        wellPanel(
+                            h4("R Recreation Log"),
+                            verbatimTextOutput("rLog"),
+                            checkboxInput("shortenLog", "Only Show Entrys after last data reset"),
+                            uiOutput("clipButton")
+                        )
                 )
             )
         )

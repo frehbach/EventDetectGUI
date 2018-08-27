@@ -176,4 +176,27 @@ getServer <- function(input, output, session) {
         getUiXML("general",input, selectedInput = "general"
                  , selectedElement = getSelectedElementList("general", "general", input))
     })
+
+    observeEvent(input$runEDS,{
+        if(is.null(input[["xml_ForecastETSShow"]])){
+            showModal(modalDialog(title="Load Error",
+                                  "Config was not fully loaded, please revisit Config tab"))
+            return()
+        }
+        if(!checkInputCorrectness(input)){
+            return()
+        }
+        ctrl <- getControlList(input, "preProcess")
+        return()
+        tryCatch(expr = {
+            detectEvents(stationBData[1:1000,-1])
+        }, error = function(cond) {
+            showModal(modalDialog(title="Configuration Error",HTML(paste("There seems to be an error in your configuration.<br>
+                                                                         detectEvents was not able to run.<br>
+                                                                         Please check for typos/misconfigurations
+                                                                         in the Config Tab<br><br>Original error was:<br>",cond))
+                                  ,footer=NULL,easyClose=T))
+            return()
+        })
+    })
 }
