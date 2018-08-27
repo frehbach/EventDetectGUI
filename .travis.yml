@@ -1,18 +1,7 @@
 language: r
 warnings_are_errors: true
 
-cache: packages
-
 sudo: required
-
-cache:
-  # Main R library
-  packages: true
-  directories:
-    # Packrat packages
-    - packrat/lib
-    # PhantomJS
-    - travis_phantomjs
 
 # Install PhantomJS (if not cached)
 before_install:
@@ -28,8 +17,8 @@ before_install:
   - "phantomjs --version"
 
 r_github_packages:
-  - jimhester/shinytest@covr
-  - jimhester/covr@shiny-app
+  - r-lib/covr
+  - rstudio/shinytest
   - frehbach/EventDetectGUI
 after_success:
   - Rscript -e 'library(covr);codecov()'
