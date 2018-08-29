@@ -18,8 +18,7 @@
             <variable>
                 <name>verbosityLevel</name>
                 <type>integer</type>
-                <default>0</default>
-                <min>0</min>
+                <default>2</default>
             </variable>
         </variableList>
     </general>
