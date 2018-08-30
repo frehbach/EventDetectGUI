@@ -16,6 +16,7 @@
 #' @importFrom tools Rd_db
 #' @importFrom stats sd
 #' @importFrom utils read.csv
+#' @import EventDetectR
 #'
 #' @export
 runGUI <- function() {

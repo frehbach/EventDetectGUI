@@ -10,14 +10,37 @@
 #' @export
 getServer <- function(input, output, session) {
 
+    #Reactive Vals:
+    edsResults <- reactiveVal(NULL)
+
     #Reads the currently configured csv file and shows its head.
     #Initial Data loading
     output$outDataHead <- DT::renderDataTable({
         req(input$inputFile)
-        setEnvData("csvData",read.csv(input$inputFile$datapath,
-                             header = input$csvUseHeader,
-                             sep = input$csvSep,
-                             quote = input$csvQuote))
+        path <- input$inputFile$datapath
+
+        supportedFileTypes <- c(".csv",".rda",".rds", ".RData")
+
+        if(!any(endsWith(path,supportedFileTypes))){
+            showModal(modalDialog(title="Load Error",
+                                  "The file you loaded has an unsupported file-type."))
+            return()
+        }
+
+        if(endsWith(path, ".csv")){
+            setEnvData("csvData",read.csv(input$inputFile$datapath,
+                                          header = input$csvUseHeader,
+                                          sep = input$csvSep,
+                                          quote = input$csvQuote))
+        }
+        if(endsWith(path, ".rds")){
+            setEnvData("csvData",readRDS(path))
+        }
+        if(endsWith(path, ".rda") || endsWith(path, ".RData")){
+            loadedDataName <- load(path)
+            setEnvData("csvData",get(loadedDataName))
+        }
+
         return(getEnvData("csvData"))
     },options = list(scrollX = TRUE,
                      pageLength = 3,
@@ -72,7 +95,7 @@ getServer <- function(input, output, session) {
     })
 
     #--------------------------------------------------------
-    output$plotVisu <- renderPlotly({
+    output$plotVisu <- plotly::renderPlotly({
         if(is.null(getEnvData("csvData"))){
             return(NULL)
         }
@@ -186,17 +209,50 @@ getServer <- function(input, output, session) {
         if(!checkInputCorrectness(input)){
             return()
         }
-        ctrl <- getControlList(input, "preProcess")
-        return()
+
         tryCatch(expr = {
-            detectEvents(stationBData[1:1000,-1])
+            windowSize <- input$xml_generalShowwindowSize
+            nIterationsRefit <- input$xml_generalShownIterationsRefit
+            verbosityLevel <- input$xml_generalShowverbosityLevel
+
+            dataPreps <- input$preProcessSelector
+            dataCtrl <- getControlList(input,"preProcess")
+
+            algo <- input$algorithmSelector
+            algoCtrl <- getControlList(input,"algorithm")
+
+            dataPost <- input$postProcessSelector
+            postCtrl <- getControlList(input,"postProcess")
+
+            d <- getEnvData("csvData")
+            d <- d[,-1] ## Remove the time column --- Later this should be done in one
+            ## central point in code, not here! User should select column, its not always 1
+            #browser()
+            edsResults(EventDetectR::detectEvents(d, windowSize = windowSize,
+                                                  nIterationsRefit = nIterationsRefit,
+                                                  verbosityLevel = verbosityLevel,
+                                                  dataPrepators = dataPreps,
+                                                  dataPreparationControl = dataCtrl,
+                                                  buildModelAlgo = algo,
+                                                  buildModelControl = algoCtrl,
+                                                  postProcessors = dataPost,
+                                                  postProcessorControl = postCtrl))
+            return()
         }, error = function(cond) {
-            showModal(modalDialog(title="Configuration Error",HTML(paste("There seems to be an error in your configuration.<br>
-                                                                         detectEvents was not able to run.<br>
-                                                                         Please check for typos/misconfigurations
-                                                                         in the Config Tab<br><br>Original error was:<br>",cond))
+            showModal(modalDialog(title="Configuration Error",
+                                  HTML(paste("There seems to be an error in your configuration.<br>
+                                            detectEvents was not able to run.<br>
+                                            Please check for typos/misconfigurations
+                                            in the Config Tab<br><br>Original error was:<br>",cond))
                                   ,footer=NULL,easyClose=T))
             return()
         })
     })
+
+    output$edsResultTable <- DT::renderDataTable({
+        req(edsResults())
+        edsResults()$classification
+    },options = list(scrollX = TRUE,
+                     pageLength = 3,
+                     lengthMenu = c(3, 5, 10, 15, 20)))
 }

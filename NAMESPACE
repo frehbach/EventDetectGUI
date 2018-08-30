@@ -3,6 +3,7 @@
 export(getServer)
 export(getUIPage)
 export(runGUI)
+import(EventDetectR)
 import(XML)
 import(plotly)
 import(shiny)

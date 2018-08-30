@@ -42,9 +42,7 @@ getUIPage <- function(){
                                 tags$div(title="Select a data file to import",
                                          fileInput("inputFile", "Data File Selection",
                                                    multiple = TRUE,
-                                                   accept = c("text/csv",
-                                                              "text/comma-separated-values,text/plain",
-                                                              ".csv"))),
+                                                   accept = c(".rds",".csv", ".RData", ".rda"))),
                                 checkboxInput("csvAdvancedConfig", "Specify advanced CSV read options", FALSE),
                                 conditionalPanel(
                                     condition = "input.csvAdvancedConfig == true",
@@ -116,9 +114,8 @@ getUIPage <- function(){
                 ),
 
                 tabItem(tabName = "runMode",
-                        h4("Sadly not yet implemented..."),
                         actionButton(inputId = "runEDS", label = "Run Event Detection"),
-                        textOutput("edsOutput")
+                        DT::dataTableOutput("edsResultTable")
                 ),
 
                 tabItem(tabName = "resView",
