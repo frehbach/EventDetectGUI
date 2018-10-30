@@ -19,6 +19,7 @@ before_install:
 r_github_packages:
   - r-lib/covr
   - rstudio/shinytest
+  - frehbach/EventDetectR
   - frehbach/EventDetectGUI
 after_success:
   - Rscript -e 'library(covr);codecov()'
