@@ -1,6 +1,7 @@
 context("Test package data storage")
 
 test_that("packageDataStorage", {
+    skip_on_appveyor()
     strName <- "someTestVariable"
     setEnvData(strName,77)
     expect_equal(getEnvData(strName),77)
