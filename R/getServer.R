@@ -44,7 +44,7 @@ getServer <- function(input, output, session) {
         return(getEnvData("csvData"))
     },options = list(scrollX = TRUE,
                      pageLength = 3,
-                     lengthMenu = c(3, 5, 10, 15, 20)))
+                     lengthMenu = c( 5, 10, 15, 20)))
 
     #Update the data table whenever a checkbox is changed.
     observeEvent(input$csvColumnCheckBox,{
@@ -54,7 +54,7 @@ getServer <- function(input, output, session) {
         output$outDataHead <- DT::renderDataTable(getEnvData("csvData")[,cols],
                                                   options = list(scrollX = TRUE,
                                                                 pageLength = length(input$outDataHead_rows_current),
-                                                                lengthMenu = c(3, 5, 10, 15, 20)))
+                                                                lengthMenu = c(5, 10, 15, 20)))
     }, ignoreNULL = FALSE)
 
     output$outDataSelection <- renderUI({
@@ -164,9 +164,6 @@ getServer <- function(input, output, session) {
         resetAllCsvCheckBoxes(session)
     })
 
-    observeEvent(input$refreshVisuPlots,{
-
-    })
 
     output$preProcessSelector <- renderUI({
         getUiSelectorXML("preProcess",input)
@@ -234,7 +231,7 @@ getServer <- function(input, output, session) {
                                                   dataPrepators = dataPreps,
                                                   dataPreparationControl = dataCtrl,
                                                   buildModelAlgo = algo,
-                                                  buildModelControl = algoCtrl,
+                                                  buildForecastModelControl = algoCtrl,
                                                   postProcessors = dataPost,
                                                   postProcessorControl = postCtrl))
             return()
@@ -254,5 +251,39 @@ getServer <- function(input, output, session) {
         edsResults()$classification
     },options = list(scrollX = TRUE,
                      pageLength = 3,
-                     lengthMenu = c(3, 5, 10, 15, 20)))
+                     lengthMenu = c(5, 10, 15, 20)))
+
+    output$uiOutPlotSelectColumnsResVisu <- renderUI({
+        req(input$outDataHead_rows_all)
+        selectInput('plotSelectionResVisu', 'Select Plot Columns', colnames(getEnvData("csvData")[,-1]), multiple=TRUE, selectize=TRUE)
+    })
+output$edsResult <- plotly::renderPlotly({
+    req(edsResults())
+y_label <- input$plotSelectionResVisu
+    p <- which(colnames(edsResults()$classification) %in% input$plotSelectionResVisu)
+    if(length(p) < 1){
+        return(NULL)
+    }
+
+x <- NULL
+y <- NULL
+
+        ggplotly(
+            ggplot2::ggplot(data = data.frame(x = 1:length(edsResults()$classification[[p]]),
+                                                             y = edsResults()$classification[[p]])) +
+            ggplot2::geom_point(ggplot2::aes(x = x, y = y,
+                                             colour = edsResults()$classification$Event), show.legend = FALSE)+ggplot2::scale_x_continuous(name='Time-Index') + ggplot2::scale_y_continuous(name=y_label))
+
+})
+
+# Export csv of the result dataset ----
+output$ExportResults <- downloadHandler(
+filename = function() {
+  paste("edsResult.csv")
+},
+    content = function(file) {
+        write.csv(edsResults()$classification, file, row.names = FALSE)
+    })
+
+
 }

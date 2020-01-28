@@ -11,12 +11,14 @@
 #' @importFrom shinyjs enable
 #' @importFrom shinyjs disable
 #' @import XML
+#' @rawNamespace import(ggplot2, except = last_plot)
 #' @import plotly
 #' @import shinyBS
 #' @importFrom tools Rd_db
 #' @importFrom stats sd
 #' @importFrom utils read.csv
 #' @import EventDetectR
+#' @importFrom utils write.csv
 #'
 #' @export
 runGUI <- function() {

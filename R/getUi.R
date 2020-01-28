@@ -20,7 +20,7 @@ getUIPage <- function(){
                         menuItem("Algorithms Config", tabName = "algConfig"),
                         menuItem("Run Event Detection", tabName = "runMode"),
                         menuItem("Result Visualization", tabName = "resView"),
-                        menuItem("Code Export", tabName = "exports")
+                        menuItem("Export Results", tabName = "exports")
             )
         ),
 
@@ -31,8 +31,8 @@ getUIPage <- function(){
 
             tabItems(
                 tabItem(tabName = "home",
-                        h2("HOME"),
-                        h4("Sadly not yet implemented...")
+                        h2("Welcome to the EventDetectGUI package"),
+                        p("This is an interface for the EventDetectR package that enables detection of events/ anomalies in multivariate time-series data. It combines multiple well-known R packages like 'forecast' to deliver an easily configurable tool for event detection.")
                 ),
 
                 # Objective function configuration tab
@@ -115,22 +115,24 @@ getUIPage <- function(){
 
                 tabItem(tabName = "runMode",
                         actionButton(inputId = "runEDS", label = "Run Event Detection"),
+                        p("After executing the run event detection, kindly wait until the algorithm is executed!",style = "color:red"),
                         DT::dataTableOutput("edsResultTable")
                 ),
 
                 tabItem(tabName = "resView",
-                        h4("Sadly not yet implemented...")
+                        h4("Results of Event Detection"),
+                      #  plotlyOutput("edsResult",width="100%")
+                      wellPanel(
+                          uiOutput("uiOutPlotSelectColumnsResVisu")
+                      ),
+                      plotlyOutput("edsResult"),
                 ),
 
                 tabItem(tabName = "exports",
-                        shiny::tags$head(shiny::tags$style(shiny::HTML(
-                            "#rLog {height: 200px; overflow: auto; }"
-                        ))),
+                        h4("Export the Results"),
                         wellPanel(
-                            h4("R Recreation Log"),
-                            verbatimTextOutput("rLog"),
-                            checkboxInput("shortenLog", "Only Show Entrys after last data reset"),
-                            uiOutput("clipButton")
+                            downloadButton("ExportResults", "Export")
+
                         )
                 )
             )
