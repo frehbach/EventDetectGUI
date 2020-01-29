@@ -8,15 +8,8 @@ Authors@R: c(
         person("Steffen", "Moritz", email="steffen.moritz10@gmail.com", role=c("aut"), comment = c(ORCID = "0000-0002-0085-1804")),
         person("Paolo", "Aguilar", role = "ctb"),
 		person("Andreas","Bodendorfer", role = "ctb"),
-		person("Christian","Höffer", role = "ctb"),
+		person("Christian","Hoeffer", role = "ctb"),
 		person("Akbar", "Shadakov", role = "ctb"))
-Author: Sowmya Chandrasekaran [aut],
-        Frederik Rehbach [aut,cre],
-        Steffen Moritz [aut] (<https://orcid.org/0000-0002-0085-1804>),
-        Paolo Aguilar [ctb],
-        Andreas Bodendorfer [ctb],
-        Christian Höffer [ctb],
-        Akbar Shadakov [ctb]
 Description: A graphical user interface for open source event detection.
 Encoding: UTF-8
 LazyData: true
