@@ -1,5 +1,6 @@
 library(testthat)
-library(shinytest)
-library(EventDetectGUI)
+#library(webshot)
+#library(shinytest)
+#library(EventDetectGUI)
 
 test_check("EventDetectGUI")

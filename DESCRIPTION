@@ -30,8 +30,8 @@ Imports:
     ggplot2
 Suggests:
     roxygen2,
-    testthat,
     shinytest,
+    testthat,
     devtools
 License: GPL-3
 VignetteBuilder: utils
