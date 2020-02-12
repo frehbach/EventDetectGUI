@@ -4,6 +4,7 @@ Title: Graphical User Interface for the 'EventDetectR' Package
 Version: 0.3.0
 Authors@R: c(
         person("Sowmya","Chandrasekaran", role = c("aut"), email = "sowzz.17@gmail.com"),
+        person("Margarita", "Rebolledo", email="margarita.rebolledo@th-koeln.de", role=c("aut")),
         person("Frederik","Rehbach", role = c("aut","cre"), email = "frederik.rehbach@th-koeln.de"),
         person("Steffen", "Moritz", email="steffen.moritz10@gmail.com", role=c("aut"), comment = c(ORCID = "0000-0002-0085-1804")),
         person("Paolo", "Aguilar", role = "ctb"),
