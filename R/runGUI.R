@@ -21,6 +21,7 @@
 #' @importFrom utils write.csv
 #'
 #' @export
+#' @return None
 runGUI <- function() {
     appDir <- system.file(package = "EventDetectGUI")
     if (appDir == "") {

@@ -4,14 +4,14 @@
 \alias{getClosureVariableFromUI}
 \title{getClosureVariableFromUI}
 \usage{
-getClosureVariableFromUI(input, inputName, asText = F)
+getClosureVariableFromUI(input, inputName, asText = FALSE)
 }
 \arguments{
 \item{input}{shiny server input}
 
 \item{inputName}{missing docu}
 
-\item{asText}{for log generation set 'asText' = T}
+\item{asText}{for log generation set 'asText' = TRUE}
 }
 \value{
 closureVar

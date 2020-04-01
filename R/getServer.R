@@ -1,6 +1,6 @@
-#' Generate Server Part of owosGUI
+#' Generate Server Part of GUI
 #'
-#' Generates the server part of the owosGUI.
+#' Generates the server part of the GUI.
 #' This method is used internally in the starting process of the GUI.
 #' Manual use of this function is not advised.
 #'
@@ -8,6 +8,7 @@
 #' @param output shiny UI-output
 #' @param session shiny UI-session
 #' @export
+#' @return None
 getServer <- function(input, output, session) {
 
     #Reactive Vals:

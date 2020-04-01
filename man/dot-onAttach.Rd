@@ -6,6 +6,9 @@
 \usage{
 .onAttach(libname, pkgname)
 }
+\value{
+None
+}
 \description{
 The package startup message is defined here. It shall give a clue on how to
 start the owosGUI and which suggests might want to be installed.

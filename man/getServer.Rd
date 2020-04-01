@@ -2,7 +2,7 @@
 % Please edit documentation in R/getServer.R
 \name{getServer}
 \alias{getServer}
-\title{Generate Server Part of owosGUI}
+\title{Generate Server Part of GUI}
 \usage{
 getServer(input, output, session)
 }
@@ -13,8 +13,11 @@ getServer(input, output, session)
 
 \item{session}{shiny UI-session}
 }
+\value{
+None
+}
 \description{
-Generates the server part of the owosGUI.
+Generates the server part of the GUI.
 This method is used internally in the starting process of the GUI.
 Manual use of this function is not advised.
 }

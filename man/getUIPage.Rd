@@ -6,6 +6,9 @@
 \usage{
 getUIPage()
 }
+\value{
+None
+}
 \description{
 Generates the UI part of the GUI.
 This method is used internally in the starting process,

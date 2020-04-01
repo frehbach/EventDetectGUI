@@ -4,14 +4,14 @@
 \alias{getControlList}
 \title{getControlList}
 \usage{
-getControlList(input, strID, asText = F)
+getControlList(input, strID, asText = FALSE)
 }
 \arguments{
 \item{input}{shiny server input}
 
 \item{strID}{group name in xml file}
 
-\item{asText}{for log generation set 'asText' = T}
+\item{asText}{for log generation set 'asText' = TRUE}
 }
 \value{
 controlList

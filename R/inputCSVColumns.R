@@ -1,4 +1,6 @@
-
+#' Choosing the input columns
+#' @keywords internal
+#' @return number of columns in the packageData Environment
 getAmountCsvCheckBoxes <- function(){
     return(ncol(getEnvData("csvData")))
 }

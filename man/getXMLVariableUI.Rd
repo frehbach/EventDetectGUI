@@ -4,7 +4,7 @@
 \alias{getXMLVariableUI}
 \title{getXMLVariableUI}
 \usage{
-getXMLVariableUI(input, rootName, var, asText = F)
+getXMLVariableUI(input, rootName, var, asText = FALSE)
 }
 \arguments{
 \item{input}{shiny server input}
@@ -13,7 +13,7 @@ getXMLVariableUI(input, rootName, var, asText = F)
 
 \item{var}{the variable name to get}
 
-\item{asText}{for log generation set 'asText' = T}
+\item{asText}{for log generation set 'asText' = TRUE}
 }
 \value{
 var

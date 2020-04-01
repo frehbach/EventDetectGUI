@@ -4,6 +4,7 @@
 #' start the owosGUI and which suggests might want to be installed.
 #'
 #' @keywords internal
+#' @return None
 .onAttach <- function(libname, pkgname){
     if (!interactive()) return()
     packageStartupMessage("*** Welcome to the EventDetectGUI package ***\n\n

@@ -5,12 +5,12 @@
 #'
 #' @param input shiny server input
 #' @param strID group name in xml file
-#' @param asText for log generation set 'asText' = T
+#' @param asText for log generation set 'asText' = TRUE
 #'
 #' @return controlList
 #'
 #' @keywords internal
-getControlList <- function(input, strID, asText = F){
+getControlList <- function(input, strID, asText = FALSE){
     rootName <- "xml_"
     xmlRoot <- xmlGetRootElement()
     xmlFilteredForID <- xmlRoot[which(names(xmlRoot)==strID)]
@@ -41,12 +41,12 @@ getControlList <- function(input, strID, asText = F){
 #' @param input shiny server input
 #' @param rootName xml root name group name in xml file
 #' @param varList the variable name to get
-#' @param asText for log generation set 'asText' = T
+#' @param asText for log generation set 'asText' = TRUE
 #'
 #' @return varList
 #'
 #' @keywords internal
-getXMLVarListUI <- function(input, rootName, varList, asText = F){
+getXMLVarListUI <- function(input, rootName, varList, asText = FALSE){
     rootName <- paste0(rootName, varList$name)
     indVars <- which(names(varList) == "variable")
     indVarLists <- which(names(varList) == "variableList")
@@ -69,12 +69,12 @@ getXMLVarListUI <- function(input, rootName, varList, asText = F){
 #' @param input shiny server input
 #' @param rootName xml root name group name in xml file
 #' @param var the variable name to get
-#' @param asText for log generation set 'asText' = T
+#' @param asText for log generation set 'asText' = TRUE
 #'
 #' @return var
 #'
 #' @keywords internal
-getXMLVariableUI <- function(input, rootName, var, asText = F){
+getXMLVariableUI <- function(input, rootName, var, asText = FALSE){
     uiName <- paste0(rootName,var$name)
     l <- list()
     if(var$type == "string" & asText){
@@ -106,12 +106,12 @@ getXMLVariableUI <- function(input, rootName, var, asText = F){
 #'
 #' @param input shiny server input
 #' @param strID group name in xml file
-#' @param asText for log generation set 'asText' = T
+#' @param asText for log generation set 'asText' = TRUE
 #'
 #' @return extraValue
 #'
 #' @keywords internal
-getExtraParametersList <- function(input, strID, asText = F){
+getExtraParametersList <- function(input, strID, asText = FALSE){
     inputName <- paste0(strID,"ExtraParameters")
     if(input[[inputName]] == ""){
         return(NULL)
@@ -126,12 +126,12 @@ getExtraParametersList <- function(input, strID, asText = F){
 #'
 #' @param input shiny server input
 #' @param inputName missing docu
-#' @param asText for log generation set 'asText' = T
+#' @param asText for log generation set 'asText' = TRUE
 #'
 #' @return closureVar
 #'
 #' @keywords internal
-getClosureVariableFromUI <- function(input, inputName, asText = F){
+getClosureVariableFromUI <- function(input, inputName, asText = FALSE){
     if((input[[inputName]] == "NULL")){
         if(asText){
             return("NULL")

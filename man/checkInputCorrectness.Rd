@@ -10,7 +10,7 @@ checkInputCorrectness(input)
 \item{input}{GUi Inputs}
 }
 \value{
-T for correct user input, F for a faulty configuration
+TRUE for correct user input, FALSE for a faulty configuration
 }
 \description{
 Main Input checking function, calls all subChecks and creates User-Dialogs for the respective problems.

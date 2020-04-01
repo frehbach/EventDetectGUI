@@ -5,6 +5,7 @@
 #' manual use of this function is not advised.
 #'
 #' @export
+#' @return None
 getUIPage <- function(){
     dashboardPage(
         # Theme Color Setting

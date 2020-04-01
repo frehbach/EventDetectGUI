@@ -4,7 +4,7 @@
 \alias{getXMLVarListUI}
 \title{getXMLVarListUI}
 \usage{
-getXMLVarListUI(input, rootName, varList, asText = F)
+getXMLVarListUI(input, rootName, varList, asText = FALSE)
 }
 \arguments{
 \item{input}{shiny server input}
@@ -13,7 +13,7 @@ getXMLVarListUI(input, rootName, varList, asText = F)
 
 \item{varList}{the variable name to get}
 
-\item{asText}{for log generation set 'asText' = T}
+\item{asText}{for log generation set 'asText' = TRUE}
 }
 \value{
 varList

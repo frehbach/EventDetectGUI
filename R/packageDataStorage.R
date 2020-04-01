@@ -24,6 +24,7 @@ getEnvData <- function(strName){
 #' @param value Any value that shall be set to the respective variable
 #'
 #' @keywords internal
+#' @return None
 setEnvData <- function(strName, value){
     assign(strName,value,envir = packageDataEnv)
 }

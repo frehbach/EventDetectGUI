@@ -1,8 +1,3 @@
-xmlGetRootElement <- function(){
-    xmlInfo <- xmlParse(system.file("config.xml", package="EventDetectGUI"))
-    xmlList <- xmlToList(xmlInfo)
-    xmlList
-}
 
 
 #' xmlGetAllConfiguredControlElements
@@ -12,6 +7,13 @@ xmlGetRootElement <- function(){
 #'
 #' @return List with all configured preProcess, postProcess and algorithms
 #' as well as their respective parameters.
+#'
+ xmlGetRootElement <- function(){
+xmlInfo <- xmlParse(system.file("config.xml", package="EventDetectGUI"))
+xmlList <- xmlToList(xmlInfo)
+xmlList
+}
+
 xmlGetAllConfiguredControlElements <- function(){
     xmlList <- xmlGetRootElement()
     if(is.null(xmlList)){
@@ -53,7 +55,7 @@ getUIListFromVarLists <- function(element, rootName){
     for(l in varLists){
         localVarList <- element[[l]]
 
-        if(!grepl("xml_",rootName,fixed = T)){
+        if(!grepl("xml_",rootName,fixed = TRUE)){
             inputID <- paste0("xml_",rootName,localVarList$name)
         }else{
             inputID <- paste0(rootName,localVarList$name)
@@ -123,11 +125,11 @@ getUiElementFromXML <- function(xmlElement,rootName){
            "closure" = textInput(paste0("xml_",rootName,xmlElement$name),label = xmlElement$name,
                                 value = if(!is.null(xmlElement$default)){xmlElement$default}else{""}),
            "boolean" = checkboxInput(paste0("xml_",rootName,xmlElement$name),label = xmlElement$name,
-                                     value = if(!is.null(xmlElement$default)){eval(parse(text = xmlElement$default))}else{T})
+                                     value = if(!is.null(xmlElement$default)){eval(parse(text = xmlElement$default))}else{TRUE})
     )
 }
 
-getUiSelectorXML <- function(strID, input, returnUIElement = T){
+getUiSelectorXML <- function(strID, input, returnUIElement = TRUE){
     xmlList <- xmlGetRootElement()
 
     nameList <- names(xmlList)

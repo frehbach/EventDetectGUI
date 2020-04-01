@@ -6,6 +6,9 @@
 \usage{
 recordNewTest()
 }
+\value{
+None
+}
 \description{
 Simply run 'recordNewTest()' and the test creation GUI will pop up.
 }

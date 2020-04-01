@@ -11,6 +11,9 @@ setEnvData(strName, value)
 
 \item{value}{Any value that shall be set to the respective variable}
 }
+\value{
+None
+}
 \description{
 Set a value to a variable in the packageData Environment
 }

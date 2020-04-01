@@ -6,6 +6,9 @@
 \usage{
 runGUI()
 }
+\value{
+None
+}
 \description{
 Run the starting command of the EventDetectGUI. Opens the graphical shiny application through which the user
 can acess the algorithms and visualizations.
