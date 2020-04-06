@@ -19,7 +19,7 @@ require(devtools)
 install_github("frehbach/EventDetectGUI")
 ```
 
-The package will soon be available on CRAN and can be installed:
+The package is available on CRAN and can be installed:
 
 ```R
 install.packages('EventDetectGUI')
